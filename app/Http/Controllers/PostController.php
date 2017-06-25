@@ -15,7 +15,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+        return view("posts/index")->withPosts($posts);
     }
 
     /**
@@ -45,7 +46,7 @@ class PostController extends Controller
 
         Session::flash("succes", "The post was succesfully saved!");
 
-        return redirect()->route("posts/show", $post->id);
+        return redirect()->route("posts.show", $post->id);
     }
 
     /**
@@ -56,7 +57,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        return view("posts/show");
+        $post = Post::find($id);
+        return view("posts/show")->withPost($post);
     }
 
     /**
