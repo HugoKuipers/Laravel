@@ -1,7 +1,6 @@
 @extends("main")
 
 @section("title", " - About")
-@section("activeAbout", "active")
 @section("content")
       <div class="row">
         <div class="col-md-12">
