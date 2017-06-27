@@ -14,6 +14,9 @@
         {{ Form::label("title", "Title:") }}
         {{ Form::text("title", "Give me a title!", array("class"=>"form-control", "required"=>"", "maxlength"=>"255")) }}
 
+        {{ Form::label("slug", "Url Slug:") }}
+        {{ Form::text("slug", null, array("class"=>"form-control", "required"=>"", "maxlength"=>"255", "minlength"=>"5", "unique"=>"")) }}
+
         {{ Form::label("body", "Post Body:") }}
         {{ Form::textarea("body", "Write stuff here", array("class"=>"form-control", "required"=>"")) }}
 
