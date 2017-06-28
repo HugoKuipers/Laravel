@@ -6,7 +6,7 @@
       <div class="jumbotron">
         <h1>Welcome to My Blog!</h1>
         <p class="lead">Thank you for visiting, this is a test site to practice Laravel. Please read the popular post!</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Popular Post</a></p>
+        <p><a class="btn btn-primary btn-lg" href="{{ url("blog/".$posts[0]->slug) }}" role="button">Popular Post</a></p>
       </div>
     </div>
   </div>
@@ -16,7 +16,7 @@
         <div class="post">
           <h3>{{ substr($post->title, 0, 30) }}{{ strlen($post->title) > 30 ? "..." : "" }}</h3>
           <p>{{ substr($post->body, 0, 100) }}{{ strlen($post->body) > 100 ? "..." : "" }}</p>
-          {!! Html::linkRoute("posts.show", "Continue Reading", array($post->id), array("class"=>"btn btn-primary")) !!}
+          {!! Html::linkRoute("blog.single", "Continue Reading", array($post->slug), array("class"=>"btn btn-primary")) !!}
         </div>
         <hr>
       @endforeach
