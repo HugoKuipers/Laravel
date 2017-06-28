@@ -6,7 +6,7 @@
       <div class="jumbotron">
         <h1>Welcome to My Blog!</h1>
         <p class="lead">Thank you for visiting, this is a test site to practice Laravel. Please read the popular post!</p>
-        <p><a class="btn btn-primary btn-lg" href="{{ url("blog/".$posts[0]->slug) }}" role="button">Popular Post</a></p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Popular Post</a></p>
       </div>
     </div>
   </div>
