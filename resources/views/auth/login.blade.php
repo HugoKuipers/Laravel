@@ -12,7 +12,7 @@
         {{ Form::password("password", ["class"=>"form-control"]) }}
         <br>
 
-        {{ Form::checkbox("remember", ["class"=>"form-control"]) }}{{ Form::label("remember", "Remember Me", ["class"=>"form-control"]) }}
+        {{ Form::checkbox("remember") }} {{ Form::label("remember", "Remember Me") }}
         <br>
 
         {{ Form::submit("Login", ["class"=>"btn btn-primary btn-block"]) }}

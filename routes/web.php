@@ -12,11 +12,11 @@
 */
 
 
-Route::get("auth/login", "Auth/LoginController@getLogin");
-Route::post("auth/login", "Auth/LoginController@postLogin");
-Route::get("auth/logout", "Auth/LoginController@getLogout");
-Route::get("auth/register", "Auth/RegisterController@getRegister");
-Route::post("auth/register", "Auth/RegisterController@postRegister");
+// Route::get("auth/login", "Auth/LoginController@getLogin");
+// Route::post("auth/login", "Auth/LoginController@postLogin");
+// Route::get("auth/logout", "Auth/LoginController@getLogout");
+// Route::get("auth/register", "Auth/RegisterController@getRegister");
+// Route::post("auth/register", "Auth/RegisterController@postRegister");
 
 Route::get("blog/{slug}", ["as"=>"blog.single", "uses"=>"BlogController@getSingle"])->where("slug", "[\w\d\-\_]+");
 Route::get("blog", ["uses"=>"BlogController@getIndex", "as"=>"blog.index"]);
@@ -24,3 +24,6 @@ Route::get("contact", "PagesController@getContact");
 Route::get("about", "PagesController@getAbout");
 Route::get("/", "PagesController@getIndex");
 Route::resource("posts", "PostController");
+
+Auth::routes();
+Route::get("logout", "Auth\LoginController@logout");
