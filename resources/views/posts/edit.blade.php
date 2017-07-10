@@ -3,6 +3,7 @@
 @section("title", "- edit post")
 @section("stylesheets")
   {!! Html::style("css/Parsley.css") !!}
+  {!! Html::style("css/select2.min.css") !!}
 @endsection
 
 @section("content")
@@ -14,6 +15,9 @@
 
       {{ Form::label("slug", "Url Slug:", array("class"=>"form-spacing-top")) }}
       {{ Form::text("slug", null, array("class"=>"form-control", "required"=>"", "maxlength"=>"255", "minlength"=>"5", "unique"=>"")) }}
+
+      {{ Form::label("category_id", "Category:", array("class"=>"form-spacing-top")) }}
+      {{ Form::select("category_id", $categories, null, ["class"=>"form-control"]) }}
 
       {{ Form::label("body", "Post Body:", array("class"=>"form-spacing-top")) }}
       {{ Form::textarea("body", null, array("class"=>"form-control", "required"=>"")) }}
@@ -44,4 +48,5 @@
 
 @section("scripts")
   {!! Html::script("js/Parsley.js") !!}
+  {!! Html::script("js/select2.min.js") !!}
 @endsection

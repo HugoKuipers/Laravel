@@ -12,7 +12,7 @@
         {{ Form::password("password", ["class"=>"form-control"]) }}
         <br>
 
-        {{ Form::checkbox("remember") }} {{ Form::label("remember", "Remember Me") }}
+        {{ Form::checkbox("remember") }} {{ Form::label("remember", "Remember Me") }} {{ Html::linkRoute("password.request", "Forgot Password", [], array("class"=>"to-the-right")) }}
         <br>
 
         {{ Form::submit("Login", ["class"=>"btn btn-primary btn-block"]) }}

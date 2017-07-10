@@ -9,3 +9,8 @@
 .login-space {
   margin-top: 8px;
 }
+
+.to-the-right {
+  float: right;
+  margin-right: 5px;
+}

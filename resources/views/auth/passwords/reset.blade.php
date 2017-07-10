@@ -16,8 +16,8 @@
 
                     {{ Form::label("password", "New Password:") }}
                     {{ Form::password("password", ["class"=>"form-control"]) }}
-                    {{ Form::label("passwordConfirmation", "Confirm Password:") }}
-                    {{ Form::password("passwordConfirmation", ["class"=>"form-control"]) }}
+                    {{ Form::label("password_confirmation", "Confirm Password:") }}
+                    {{ Form::password("password_confirmation", ["class"=>"form-control"]) }}
 
                     {{ Form::submit("Reset Password", ["class"=>"btn btn-primary center-block btn-h1-spacing"]) }}
 
