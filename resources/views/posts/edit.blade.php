@@ -1,9 +1,17 @@
 @extends("main")
 
 @section("title", "- edit post")
-@section("stylesheets")
+@section("style")
   {!! Html::style("css/Parsley.css") !!}
   {!! Html::style("css/select2.min.css") !!}
+  <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+  <script>
+    tinymce.init({
+      selector: 'textarea',
+      plugins: 'link code',
+      menubar: false
+    });
+  </script>
 @endsection
 
 @section("content")
@@ -19,8 +27,11 @@
       {{ Form::label("category_id", "Category:", array("class"=>"form-spacing-top")) }}
       {{ Form::select("category_id", $categories, null, ["class"=>"form-control"]) }}
 
+      {{ Form::label("tags", "Tags:", ["class"=>"form-spacing-top"]) }}
+      {{ Form::select("tags[]", $tags, null, ["multiple", "class"=>"select2-multi form-control"]) }}
+
       {{ Form::label("body", "Post Body:", array("class"=>"form-spacing-top")) }}
-      {{ Form::textarea("body", null, array("class"=>"form-control", "required"=>"")) }}
+      {{ Form::textarea("body", null, array("class"=>"form-control")) }}
     </div>
     <div class="col-md-4">
       <div class="well">
@@ -49,4 +60,8 @@
 @section("scripts")
   {!! Html::script("js/Parsley.js") !!}
   {!! Html::script("js/select2.min.js") !!}
+  <script>
+    $(".select2-multi").select2();
+    $(".select2-multi").select2().val({!! json_encode($post->tags()->allRelatedIds()) !!}).trigger("change");
+  </script>
 @endsection

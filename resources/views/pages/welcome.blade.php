@@ -15,7 +15,7 @@
       @foreach($posts as $post)
         <div class="post">
           <h3>{{ substr($post->title, 0, 30) }}{{ strlen($post->title) > 30 ? "..." : "" }}</h3>
-          <p>{{ substr($post->body, 0, 100) }}{{ strlen($post->body) > 100 ? "..." : "" }}</p>
+          <p>{{ substr(strip_tags($post->body), 0, 100) }}{{ strlen(strip_tags($post->body)) > 100 ? "..." : "" }}</p>
           {!! Html::linkRoute("blog.single", "Continue Reading", array($post->slug), array("class"=>"btn btn-primary")) !!}
         </div>
         <hr>

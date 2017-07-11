@@ -18,7 +18,7 @@
           @foreach($tags as $tag)
             <tr>
               <th>{{ $tag->id }}</th>
-              <td>{{ $tag->name }}</td>
+              <td><a href="{{ route("tags.show", $tag->id) }}">{{ $tag->name }}</a></td>
             </tr>
           @endforeach
         </tbody>
@@ -29,11 +29,12 @@
       <div class="well">
         {!! Form::open(["route"=>"tags.store", "method"=>"POST"]) !!}
 
-        <h2>New Tag</h2>
-        {{ Form::label("name", "Tag Name:") }}
-        {{ Form::text("name", null, ["class"=>"form-control"]) }}
+          <h2>New Tag</h2>
+          {{ Form::label("name", "Tag Name:") }}
+          {{ Form::text("name", null, ["class"=>"form-control"]) }}
 
-        {{ Form::submit("Create Tag", ["class"=>"btn btn-primary btn-block btn-h1-spacing"])}}
+          {{ Form::submit("Create Tag", ["class"=>"btn btn-primary btn-block btn-h1-spacing"])}}
+        {!! Form::close() !!}
       </div>
     </div>
 

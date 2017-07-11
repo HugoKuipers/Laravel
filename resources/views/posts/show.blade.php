@@ -5,7 +5,15 @@
   <div class="row">
     <div class="col-md-8">
       <h1>{{ $post->title }}</h1>
-      <p class="lead">{{ $post->body }}</p>
+      <p class="lead">{!! $post->body !!}</p>
+      <hr>
+      <div class="tags">
+        <?php $i = 1; ?>
+        @foreach($post->tags as $tag)
+          <span>{{ $tag->name }}{{ (count($post->tags) > $i) ? " - " : "" }}</span>
+          <?php $i += 1; ?>
+        @endforeach
+      </div>
     </div>
     <div class="col-md-4">
       <div class="well">

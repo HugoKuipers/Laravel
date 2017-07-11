@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Tag;
+use App\Post;
 use Session;
 
 class TagController extends Controller
@@ -49,7 +50,8 @@ class TagController extends Controller
      */
     public function show($id)
     {
-        //
+        $tag = Tag::find($id);
+        return view("tags/show")->withTag($tag);
     }
 
     /**
@@ -60,7 +62,8 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        //
+      $tag = Tag::find($id);
+      return view("tags/edit")->withTag($tag);
     }
 
     /**
@@ -72,7 +75,14 @@ class TagController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $this->validate($request, ["name"=>"required|max:255|unique:tags,name"]);
+
+      $tag = Tag::find($id);
+      $tag->name = $request->name;
+      $tag->save();
+
+      Session::flash("succes", "You changed the tag name, good job you!");
+      return redirect()->route("tags.index");
     }
 
     /**
@@ -83,6 +93,13 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $tag = Tag::find($id);
+      $tag->posts()->detach();
+
+      Tag::destroy($id);
+
+      Session::flash("succes", "The tag was succesfully deleted!");
+
+      return redirect()->route("tags.index");
     }
 }
