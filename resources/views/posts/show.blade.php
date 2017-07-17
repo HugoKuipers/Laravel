@@ -14,6 +14,32 @@
           <?php $i += 1; ?>
         @endforeach
       </div>
+      <div id="backend-comments" class='comment-spacing'>
+        <h3>Comments, {{ $post->comments()->count() }} total</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Comment</th>
+              <th width="70px"></th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach($post->comments as $comment)
+              <tr>
+                <td>{{ $comment->name }}</td>
+                <td>{{ $comment->email }}</td>
+                <td>{{ $comment->comment }}</td>
+                <td>
+                  <a href='{{ route('comments.edit', $comment->id) }}' class="btn btn-primary btn-xs"><span class='glyphicon glyphicon-edit'></span></a>
+                  <a href='{{ route('comments.delete', $comment->id) }}' class="btn btn-danger btn-xs"><span class='glyphicon glyphicon-trash'></span></a>
+                </td>
+              </tr>
+            @endforeach
+          </tbody>
+        </table>
+      </div>
     </div>
     <div class="col-md-4">
       <div class="well">
