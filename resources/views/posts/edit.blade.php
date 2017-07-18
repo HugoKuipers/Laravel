@@ -16,7 +16,7 @@
 
 @section("content")
   <div class="row">
-    {!! Form::model($post, array("route"=>["posts.update", $post->id], "method"=>"PUT", "data-parsley-validate"=>"")) !!}
+    {!! Form::model($post, array("route"=>["posts.update", $post->id], "method"=>"PUT", 'files'=>true, "data-parsley-validate"=>"")) !!}
     <div class="col-md-8">
       {{ Form::label("title", "Title:") }}
       {{ Form::text("title", null, array("class"=>"form-control input-lg", "required"=>"", "maxlength"=>"255")) }}
@@ -29,6 +29,9 @@
 
       {{ Form::label("tags", "Tags:", ["class"=>"form-spacing-top"]) }}
       {{ Form::select("tags[]", $tags, null, ["multiple", "class"=>"select2-multi form-control"]) }}
+
+      {{ Form::label("image", "Edit Image:", ["class"=>"form-spacing-top"]) }}
+      {{ Form::file("image", ["class"=>"form-control"]) }}
 
       {{ Form::label("body", "Post Body:", array("class"=>"form-spacing-top")) }}
       {{ Form::textarea("body", null, array("class"=>"form-control")) }}
