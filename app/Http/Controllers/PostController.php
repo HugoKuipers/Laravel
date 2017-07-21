@@ -125,7 +125,7 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $this->validate($request, array("title"=>"required|max:255", "slug"=>"required|max:255|min:5|unique:posts,slug,$id|alpha_dash", "body"=>"required", "category_id"=>"required", 'image'=>'sometimes|image'));
+      $this->validate($request, ["title"=>"required|max:255", "slug"=>"required|max:255|min:5|unique:posts,slug,$id|alpha_dash", "body"=>"required", "category_id"=>"required", 'image'=>'sometimes|image']);
 
       $post = Post::find($id);
       $post->title = $request->input("title");
